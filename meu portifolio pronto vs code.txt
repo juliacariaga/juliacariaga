@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julia Cariaga · Portfólio</title>
+<meta name="description" content="Portfólio de Julia Cariaga, estudante do Ensino Médio Técnico em Informática.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Bungee&display=swap" rel="stylesheet">
+<style>
+
+  /* ===== TOKENS ===== */
+  :root{
+    --pink:        #FF6FA8;
+    --pink-deep:    #E84393;
+    --pink-pale:    #FFE3EE;
+    --pink-bg:      #FFF6FA;
+    --gold:         #CFA64C;
+    --gold-light:   #F3DFA8;
+    --gold-deep:    #9C7A2E;
+    --plum:         #4A1942;
+    --plum-soft:    rgba(74,25,66,0.68);
+    --cream:        #FFFBF6;
+    --white:        #FFFFFF;
+
+    --f-display:'Playfair Display', serif;
+    --f-script:'Caveat', cursive;
+    --f-body:'Poppins', sans-serif;
+    --f-mono:'Space Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--plum);
+    font-family:var(--f-body);
+    font-weight:400;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ margin:0; padding:0; list-style:none; }
+  h1,h2,h3,p{ margin:0; }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  .container{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 6vw;
+  }
+
+  /* ===== ÍCONE LAÇO (assinatura visual) ===== */
+  .bow{ flex-shrink:0; }
+  .bow path, .bow rect{ fill:url(#bowGradient); }
+
+  /* ===== EYEBROW / RÓTULOS ===== */
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    font-family:var(--f-mono);
+    font-size:.72rem;
+    letter-spacing:.06em;
+    color:var(--gold-deep);
+    background:var(--gold-light);
+    padding:.35rem .8rem;
+    border-radius:999px;
+    margin-bottom:1.1rem;
+  }
+
+  .section-title{
+    font-family:var(--f-display);
+    font-weight:700;
+    font-size:clamp(1.9rem,4vw,2.6rem);
+    color:var(--plum);
+    display:flex;
+    align-items:center;
+    gap:.7rem;
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:200;
+    display:flex;
+    justify-content:center;
+    padding:.9rem 6vw;
+  }
+  .nav-pill{
+    width:100%;
+    max-width:1080px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    flex-wrap:wrap;
+    background:rgba(255,251,246,0.85);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(207,166,76,0.35);
+    border-radius:999px;
+    padding:.55rem .6rem .55rem 1.1rem;
+    box-shadow:0 8px 24px rgba(74,25,66,0.07);
+  }
+  .nav-brand{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    font-family:var(--f-script);
+    font-weight:700;
+    font-size:1.3rem;
+    color:var(--plum);
+  }
+  .nav-links{
+    display:flex;
+    gap:.3rem;
+    flex-wrap:wrap;
+  }
+  .nav-links a{
+    font-family:var(--f-body);
+    font-size:.82rem;
+    font-weight:500;
+    color:var(--plum-soft);
+    padding:.5rem .9rem;
+    border-radius:999px;
+    transition:background .25s, color .25s;
+  }
+  .nav-links a:hover{
+    background:var(--pink-pale);
+    color:var(--pink-deep);
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    padding:7rem 6vw 4rem;
+    background:
+      radial-gradient(circle at 18% 22%, rgba(255,111,168,0.16), transparent 45%),
+      radial-gradient(circle at 84% 18%, rgba(207,166,76,0.18), transparent 42%),
+      radial-gradient(circle at 50% 100%, rgba(255,225,237,0.9), transparent 60%),
+      var(--cream);
+    overflow:hidden;
+    text-align:center;
+  }
+  .sparkle{
+    position:absolute;
+    border-radius:50%;
+    background:var(--gold);
+    opacity:.55;
+    animation:twinkle 3.6s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{ opacity:.2; transform:scale(.7); }
+    50%{ opacity:.85; transform:scale(1.15); }
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:680px;
+    animation:riseIn 1.1s ease both;
+  }
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(22px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .hero .eyebrow{ margin-bottom:1.4rem; }
+  .hero h1{
+    font-family:var(--f-display);
+    font-weight:700;
+    font-size:clamp(3rem,9vw,5.2rem);
+    line-height:1.05;
+    background:linear-gradient(100deg,var(--gold-deep) 0%, var(--gold-light) 22%, var(--gold) 45%, var(--gold-light) 70%, var(--gold-deep) 100%);
+    background-size:250% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:var(--gold);
+    animation:shimmer 7s linear infinite;
+  }
+  @keyframes shimmer{ to{ background-position:250% center; } }
+  .hero .subtitle{
+    margin-top:1rem;
+    font-size:clamp(1rem,2vw,1.2rem);
+    font-weight:600;
+    color:var(--pink-deep);
+  }
+  .hero .tagline{
+    margin-top:.9rem;
+    font-size:1rem;
+    color:var(--plum-soft);
+    line-height:1.6;
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    margin-top:2.2rem;
+    padding:.85rem 1.8rem;
+    border-radius:999px;
+    background:linear-gradient(120deg,var(--pink-deep),var(--pink));
+    color:#fff;
+    font-weight:600;
+    font-size:.95rem;
+    box-shadow:0 10px 26px rgba(232,67,147,0.32);
+    transition:transform .25s, box-shadow .25s;
+  }
+  .btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgba(232,67,147,0.4);
+  }
+
+  /* ===== SEÇÕES GERAIS ===== */
+  section{
+    padding:6rem 0;
+  }
+  .divider{
+    display:flex;
+    justify-content:center;
+    margin:0 0 1rem;
+  }
+
+  /* ===== SOBRE MIM ===== */
+  .sobre-grid{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:3.5rem;
+    align-items:center;
+    margin-top:2.6rem;
+  }
+  .frame-wrap{
+    justify-self:center;
+  }
+  .frame{
+    width:240px;
+    height:300px;
+    border:3px solid var(--gold);
+    border-radius:18px;
+    background:linear-gradient(160deg,var(--pink-pale),var(--cream));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    box-shadow:0 18px 36px rgba(74,25,66,0.1);
+  }
+  .frame::before{
+    content:'';
+    position:absolute;
+    inset:10px;
+    border:1px solid rgba(207,166,76,0.55);
+    border-radius:12px;
+  }
+  .frame .monogram{
+    font-family:var(--f-script);
+    font-weight:700;
+    font-size:5rem;
+    color:var(--pink-deep);
+    opacity:.85;
+  }
+  .frame .pin{
+    position:absolute;
+    top:-16px;
+    left:50%;
+    transform:translateX(-50%) rotate(-8deg);
+  }
+  .sobre-text p{
+    font-size:1.02rem;
+    line-height:1.85;
+    color:var(--plum-soft);
+    margin-bottom:1.1rem;
+  }
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.6rem;
+    margin-top:1.4rem;
+  }
+  .chip{
+    font-family:var(--f-mono);
+    font-size:.8rem;
+    color:var(--plum);
+    background:var(--white);
+    border:1px solid var(--gold-light);
+    padding:.5rem .9rem;
+    border-radius:999px;
+  }
+  .likes{
+    margin-top:1.6rem;
+    display:flex;
+    flex-direction:column;
+    gap:.55rem;
+  }
+  .likes li{
+    font-size:.96rem;
+    color:var(--plum-soft);
+    display:flex;
+    gap:.6rem;
+  }
+
+  /* ===== CONHECIMENTOS ===== */
+  .stickers{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
+    gap:1.6rem;
+    margin-top:2.8rem;
+  }
+  .sticker{
+    background:var(--white);
+    border:1.5px solid var(--gold-light);
+    border-radius:16px;
+    padding:1.4rem 1rem 1.1rem;
+    text-align:center;
+    position:relative;
+    box-shadow:0 10px 22px rgba(74,25,66,0.06);
+    transition:transform .3s, box-shadow .3s, border-color .3s;
+  }
+  .stickers .sticker:nth-child(odd){ transform:rotate(-2.4deg); }
+  .stickers .sticker:nth-child(even){ transform:rotate(2deg); }
+  .sticker:hover{
+    transform:rotate(0) translateY(-4px);
+    box-shadow:0 16px 30px rgba(232,67,147,0.16);
+    border-color:var(--pink);
+  }
+  .sticker .pin{
+    position:absolute;
+    top:-9px;
+    left:50%;
+    transform:translateX(-50%);
+    width:14px; height:14px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, var(--gold-light), var(--gold-deep));
+    box-shadow:0 2px 5px rgba(0,0,0,0.18);
+  }
+  .sticker .tag{
+    display:block;
+    font-family:var(--f-mono);
+    font-size:.78rem;
+    color:var(--pink-deep);
+    margin-bottom:.5rem;
+  }
+  .sticker .label{
+    font-family:var(--f-body);
+    font-weight:600;
+    font-size:.9rem;
+    color:var(--plum);
+  }
+
+  /* ===== PROJETOS ===== */
+  .projects{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:2rem;
+    margin-top:2.8rem;
+  }
+  .project-card{
+    background:var(--white);
+    border:1px solid var(--gold-light);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 16px 34px rgba(74,25,66,0.08);
+    transition:transform .3s, box-shadow .3s;
+    display:flex;
+    flex-direction:column;
+  }
+  .project-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 22px 40px rgba(232,67,147,0.16);
+  }
+  .preview{
+    position:relative;
+    height:160px;
+    overflow:hidden;
+  }
+  .browser-bar{
+    height:26px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    padding:0 10px;
+    position:relative;
+    z-index:2;
+  }
+  .browser-bar span{
+    width:7px; height:7px; border-radius:50%;
+  }
+  .preview-hypnos{ background:#070708; }
+  .browser-bar.dark span{ background:rgba(255,255,255,0.25); }
+  .preview-hypnos .pv-content{
+    height:calc(100% - 26px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:.4rem;
+  }
+  .preview-hypnos .pv-eyebrow{
+    font-family:var(--f-mono);
+    font-size:.6rem;
+    letter-spacing:.25em;
+    color:#ff5fd1;
+    text-transform:uppercase;
+  }
+  .preview-hypnos .pv-title{
+    font-family:var(--f-display);
+    font-size:1.7rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    color:#fff;
+    text-shadow:2px 0 #ff00ea, -2px 0 #00f6ff;
+  }
+  .preview-hypnos .pv-line{
+    position:absolute;
+    left:0; right:0; height:1px;
+    background:rgba(255,255,255,0.08);
+  }
+
+  .preview-brilha{ background:#FFF1F8; }
+  .browser-bar.light span{ background:rgba(74,25,66,0.18); }
+  .preview-brilha .pv-content{
+    position:relative;
+    height:calc(100% - 26px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .preview-brilha .pv-title{
+    font-family:'Bungee', cursive;
+    font-size:1.5rem;
+    color:#FF2E9C;
+    -webkit-text-stroke:1px #1B1033;
+  }
+  .confetti{
+    position:absolute;
+    border-radius:3px;
+  }
+
+  .project-body{
+    padding:1.6rem 1.7rem 1.8rem;
+  }
+  .project-body h3{
+    font-family:var(--f-display);
+    font-size:1.3rem;
+    font-weight:700;
+    color:var(--plum);
+  }
+  .project-body p{
+    margin-top:.6rem;
+    font-size:.92rem;
+    line-height:1.65;
+    color:var(--plum-soft);
+  }
+  .tag-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.4rem;
+    margin-top:1rem;
+  }
+  .tag-row span{
+    font-family:var(--f-mono);
+    font-size:.7rem;
+    color:var(--gold-deep);
+    background:var(--gold-light);
+    padding:.3rem .6rem;
+    border-radius:999px;
+  }
+  .project-link{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
+    margin-top:1.3rem;
+    font-weight:600;
+    font-size:.9rem;
+    color:var(--pink-deep);
+    position:relative;
+  }
+  .project-link::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:-3px;
+    width:100%; height:2px;
+    background:var(--pink-deep);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .25s;
+  }
+  .project-link:hover::after{ transform:scaleX(1); }
+
+  /* ===== FOOTER ===== */
+  footer{
+    text-align:center;
+    padding:3rem 6vw 3.5rem;
+    color:var(--plum-soft);
+    font-size:.85rem;
+  }
+  footer .bow{ margin:0 auto .8rem; }
+
+  /* ===== RESPONSIVO ===== */
+  @media (max-width:760px){
+    .sobre-grid{ grid-template-columns:1fr; gap:2.2rem; }
+    .projects{ grid-template-columns:1fr; }
+    .nav-pill{ justify-content:center; }
+    .nav-links{ justify-content:center; width:100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- gradiente compartilhado pelo ícone de laço dourado -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="bowGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9C7A2E"/>
+      <stop offset="50%" stop-color="#F3DFA8"/>
+      <stop offset="100%" stop-color="#CFA64C"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- ===== NAVEGAÇÃO ===== -->
+<nav>
+  <div class="nav-pill">
+    <div class="nav-brand">
+      <svg class="bow" width="26" height="16" viewBox="0 0 100 60"><path d="M50 30 C30 5,0 5,5 30 C0 55,30 55,50 30 Z"/><path d="M50 30 C70 5,100 5,95 30 C100 55,70 55,50 30 Z"/><rect x="44" y="22" width="12" height="16" rx="4"/></svg>
+      Julia Cariaga
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#sobre">Sobre mim</a></li>
+      <li><a href="#conhecimentos">Conhecimentos</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header id="inicio" class="hero">
+  <span class="sparkle" style="width:6px;height:6px;top:18%;left:12%;animation-delay:.2s"></span>
+  <span class="sparkle" style="width:4px;height:4px;top:30%;left:82%;animation-delay:1s"></span>
+  <span class="sparkle" style="width:8px;height:8px;top:68%;left:8%;animation-delay:.6s"></span>
+  <span class="sparkle" style="width:5px;height:5px;top:78%;left:88%;animation-delay:1.6s"></span>
+  <span class="sparkle" style="width:5px;height:5px;top:12%;left:55%;animation-delay:2.1s"></span>
+  <span class="sparkle" style="width:7px;height:7px;top:50%;left:92%;animation-delay:.9s"></span>
+
+  <div class="hero-inner">
+    <span class="eyebrow">&lt;portfólio • em construção&gt;</span>
+    <h1>Julia Cariaga</h1>
+    <p class="subtitle">Técnico em Informática · 2º ano do Ensino Médio</p>
+    <p class="tagline"><!-- pode ajustar essa frase de efeito como quiser --> Unindo lógica de programação e um toque de delicadeza em cada projeto que crio.</p>
+    <a href="#projetos" class="btn-primary">Ver meus projetos ↓</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== SOBRE MIM ===== -->
+  <section id="sobre">
+    <div class="container">
+      <span class="eyebrow">01</span>
+      <div class="divider">
+        <svg class="bow" width="34" height="20" viewBox="0 0 100 60"><path d="M50 30 C30 5,0 5,5 30 C0 55,30 55,50 30 Z"/><path d="M50 30 C70 5,100 5,95 30 C100 55,70 55,50 30 Z"/><rect x="44" y="22" width="12" height="16" rx="4"/></svg>
+      </div>
+      <h2 class="section-title">Sobre mim</h2>
+
+      <div class="sobre-grid">
+        <div class="frame-wrap">
+          <div class="frame">
+            <svg class="bow pin" width="30" height="18" viewBox="0 0 100 60"><path d="M50 30 C30 5,0 5,5 30 C0 55,30 55,50 30 Z"/><path d="M50 30 C70 5,100 5,95 30 C100 55,70 55,50 30 Z"/><rect x="44" y="22" width="12" height="16" rx="4"/></svg>
+            <!-- troque esta div pela sua foto: <img src="sua-foto.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:14px"> -->
+            <span class="monogram">JC</span>
+          </div>
+        </div>
+
+        <div class="sobre-text">
+          <!-- texto de exemplo: personalize com a sua história, do seu jeito -->
+          <p>Oi, eu sou a Julia! Estou no 2º ano do Ensino Médio integrado ao curso técnico em Informática, e é nesse período que venho descobrindo o quanto gosto de criar coisas — sejam linhas de código, sejam telas bonitas de se ver.</p>
+          <p>Gosto de unir a lógica da programação com um olhar mais sensível para o design: cores, tipografia e pequenos detalhes que fazem um projeto parecer único. Cada site que construo é também um jeito de aprender algo novo sobre tecnologia.</p>
+
+          <div class="chips">
+            <span class="chip">🎓 2º ano · Ensino Médio</span>
+            <span class="chip">💻 Técnico em Informática</span>
+            <span class="chip">✨ Dev &amp; Design</span>
+          </div>
+
+          <ul class="likes">
+            <li>📚 Aprender algo novo sobre tecnologia, sempre</li>
+            <li>💻 Criar sites com identidade própria</li>
+            <li>🎀 Unir delicadeza e tecnologia em cada projeto</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONHECIMENTOS ===== -->
+  <section id="conhecimentos" style="background:linear-gradient(180deg,transparent,var(--pink-pale) 12%,var(--pink-pale) 88%,transparent)">
+    <div class="container">
+      <span class="eyebrow">02</span>
+      <div class="divider">
+        <svg class="bow" width="34" height="20" viewBox="0 0 100 60"><path d="M50 30 C30 5,0 5,5 30 C0 55,30 55,50 30 Z"/><path d="M50 30 C70 5,100 5,95 30 C100 55,70 55,50 30 Z"/><rect x="44" y="22" width="12" height="16" rx="4"/></svg>
+      </div>
+      <h2 class="section-title">Conhecimentos</h2>
+
+      <div class="stickers">
+        <div class="sticker"><span class="pin"></span><span class="tag">&lt;html&gt;</span><span class="label">HTML5</span></div>
+        <div class="sticker"><span class="pin"></span><span class="tag">.css{ }</span><span class="label">CSS3</span></div>
+        <div class="sticker"><span class="pin"></span><span class="tag">function()</span><span class="label">JavaScript</span></div>
+        <div class="sticker"><span class="pin"></span><span class="tag">if / else</span><span class="label">Lógica de Programação</span></div>
+        <div class="sticker"><span class="pin"></span><span class="tag">SELECT *</span><span class="label">Banco de Dados</span></div>
+        <div class="sticker"><span class="pin"></span><span class="tag">ping 192.168</span><span class="label">Redes de Computadores</span></div>
+        <div class="sticker"><span class="pin"></span><span class="tag">&gt; reboot</span><span class="label">Suporte Técnico</span></div>
+        <div class="sticker"><span class="pin"></span><span class="tag">#FF6FA8</span><span class="label">Design de Interface</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJETOS ===== -->
+  <section id="projetos">
+    <div class="container">
+      <span class="eyebrow">03</span>
+      <div class="divider">
+        <svg class="bow" width="34" height="20" viewBox="0 0 100 60"><path d="M50 30 C30 5,0 5,5 30 C0 55,30 55,50 30 Z"/><path d="M50 30 C70 5,100 5,95 30 C100 55,70 55,50 30 Z"/><rect x="44" y="22" width="12" height="16" rx="4"/></svg>
+      </div>
+      <h2 class="section-title">Projetos</h2>
+
+      <div class="projects">
+
+        <!-- Projeto 1: HYPNOS -->
+        <article class="project-card">
+          <div class="preview preview-hypnos">
+            <div class="browser-bar dark"><span></span><span></span><span></span></div>
+            <div class="pv-line" style="top:42%"></div>
+            <div class="pv-content">
+              <span class="pv-eyebrow">transformação</span>
+              <span class="pv-title">HYPNOS</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>HYPNOS</h3>
+            <p>Site institucional para uma marca de hipnose terapêutica, com estética dark, efeitos de glitch e animações que reforçam a sensação de imersão.</p>
+            <div class="tag-row">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Animações</span>
+            </div>
+            <a class="project-link" href="projeto-hipnose.html" target="_blank" rel="noopener">Ver projeto →</a>
+          </div>
+        </article>
+
+        <!-- Projeto 2: BRILHA -->
+        <article class="project-card">
+          <div class="preview preview-brilha">
+            <div class="browser-bar light"><span></span><span></span><span></span></div>
+            <span class="confetti" style="width:10px;height:10px;background:#00E5FF;top:18%;left:14%;transform:rotate(20deg)"></span>
+            <span class="confetti" style="width:8px;height:8px;background:#CCFF00;top:70%;left:80%;transform:rotate(-15deg)"></span>
+            <span class="confetti" style="width:9px;height:9px;background:#B14EFF;top:75%;left:18%;transform:rotate(10deg)"></span>
+            <span class="confetti" style="width:7px;height:7px;background:#FFE600;top:20%;left:84%;transform:rotate(-8deg)"></span>
+            <div class="pv-content">
+              <span class="pv-title">BRILHA ✨</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>BRILHA ✨ — a revista do milênio</h3>
+            <p>Site inspirado nas revistas teen dos anos 2000, com visual colorido, tipografia divertida e bastante referência nostálgica de época.</p>
+            <div class="tag-row">
+              <span>HTML</span><span>CSS</span><span>Design Retrô</span>
+            </div>
+            <a class="project-link" href="projeto-revista-anos-2000.html" target="_blank" rel="noopener">Ver projeto →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <svg class="bow" width="28" height="16" viewBox="0 0 100 60"><path d="M50 30 C30 5,0 5,5 30 C0 55,30 55,50 30 Z"/><path d="M50 30 C70 5,100 5,95 30 C100 55,70 55,50 30 Z"/><rect x="44" y="22" width="12" height="16" rx="4"/></svg>
+  Feito com 💛 por Julia Cariaga — Portfólio do curso técnico em Informática
+</footer>
+
+</body>
+</html>
